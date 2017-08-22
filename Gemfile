@@ -26,3 +26,4 @@ group :test do
 end
 
 gem "paper_trail", "~> 7.0.3"
+gem "kaminari", "~>1.0.1"

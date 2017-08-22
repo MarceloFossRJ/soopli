@@ -10,4 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require soopli/jquery-3.2.1.min
+//= require soopli/rails
 //= require_tree .
+//= require soopli/tether.min
+//= require soopli/bootstrap.min
+	
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
