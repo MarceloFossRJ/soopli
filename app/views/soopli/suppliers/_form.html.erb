@@ -1,0 +1,33 @@
+<div class="form-element-align">
+  <%= simple_form_for supplier, :html => { :class => 'form-group' } do |f| %>
+
+		<%= f.input :name %>
+		<%= f.association :status, include_blank: false %>
+		<%= f.association :supplier_type, include_blank: false %>
+
+<hr class="my-4">
+
+		<%= f.input :registration_country %>
+		<%= f.input :relation_started_at %>
+		<%= f.input :finantial_year, discard_year: true %>
+
+<hr class="my-4">
+		
+		<%= f.input :website %>
+		<%= f.input :twitter %>
+		<%= f.input :linkedin %>
+		<%= f.input :facebook %>
+		<%= f.input :github %>
+		<%= f.input :instagram %>
+		
+	
+      <div class="form-actions">
+        <%= f.button :submit, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    suppliers_path, :class => 'btn btn-warning' %>
+      </div>
+
+  <% end %>
+</div>
+
+

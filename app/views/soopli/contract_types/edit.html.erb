@@ -1,0 +1,8 @@
+<%= render partial: 'layouts/soopli/header', locals: {title: "Edit Contract Type"} %>
+
+<%= render partial: 'layouts/soopli/tabs', locals: {controller_class: controller_name , action: "edit", search_field:"name_cont"} %>
+
+<%= render 'form', contract_type: @contract_type %>
+
+
+

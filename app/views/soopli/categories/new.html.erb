@@ -1,0 +1,5 @@
+<%= render partial: 'layouts/soopli/header', locals: {title: "New Category"} %>
+
+<%= render partial: 'layouts/soopli/tabs', locals: {controller_class: controller_name , action: "new", search_field:""} %>
+
+<%= render 'form', category: @category %>

@@ -1,0 +1,75 @@
+<%= render partial: 'layouts/soopli/header', locals: {title: "Entities"} %>
+
+<%= render partial: 'layouts/soopli/tabs', locals: {controller_class: controller_name , action: "index", search_field:"name_cont"} %>
+
+<!-- Modal Advanced Search -->
+<div id="AdvancedSearch" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Advanced Search</h4>
+      </div>
+
+      <%= search_form_for @q, :builder => SimpleForm::FormBuilder, :html => { :class => 'form-group modal-form' }  do |f| %>
+          <div class="modal-body">
+            <%= f.input :name_cont, label: 'Name contains', required: false %>
+            <%= f.input :registration_name_cont, label: 'Registration name contains', required: false %>
+            <%= f.input :website_cont, label: 'Website contains', required: false %>
+            <%= f.input :twitter_cont, label: 'Twitter contains', required: false %>
+            <%= f.input :linkedin_cont, label: 'LinkedIn contains', required: false %>
+            <%= f.input :finantial_year_cont, label: 'Finantion year contains', required: false %>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.button :submit, :class => 'btn btn-primary', :value => 'Search' %>
+          </div>
+      <% end %>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-sm table-bordered">
+    <thead>
+    <tr>
+	  <th>Actions</th>
+	  <th><%= sort_link @q, :id, "Id" %></th>
+      <th><%= sort_link @q, :name, "Name"%></th>
+      <th><%= sort_link @q, :status_id, "Status"%></th>
+      <th><%= sort_link @q, :registration_name, "Registration name"%></th>
+      <th><%= sort_link @q, :website, "Website"%></th>
+      <th><%= sort_link @q, :twitter, "Twitter"%></th>
+      <th><%= sort_link @q, :linkedin, "Linkedin"%></th>
+      <th><%= sort_link @q, :finantial_year, "Finantial year"%></th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entities.each do |entity| %>
+      <tr>
+		<td>
+			<%= render partial: 'layouts/soopli/actions', locals: {link_to_show: entity_path(entity) , link_to_edit: edit_entity_path(entity) , link_to_delete: nil} %>
+		</td>
+        <td><%= entity.id %></td>		
+        <td><%= entity.name %></td>
+        <td><span class="<%= status_class_for(entity.status_id) %>"><%= entity.status.name %></span></td>
+        <td><%= entity.registration_name %></td>
+        <td><%= entity.website %></td>
+        <td><%= entity.twitter %></td>
+        <td><%= entity.linkedin %></td>
+        <td><%= entity.finantial_year %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= paginate @entities, views_prefix: 'soopli' %>
+

@@ -1,0 +1,5 @@
+<%= render partial: 'layouts/soopli/header', locals: {title: "Positions CRUD History"} %>
+
+<%= render partial: 'layouts/soopli/tabs', locals: {controller_class: controller_name , action: "versions", search_field:"name_cont"} %>
+
+<%= render partial: 'layouts/soopli/versions', locals: {versions: @versions}%>

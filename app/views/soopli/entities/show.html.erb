@@ -1,0 +1,47 @@
+
+<%= render partial: 'layouts/soopli/header', locals: {title: "Show User"} %>
+
+<%= render partial: 'layouts/soopli/tabs', locals: {controller_class: controller_name , action: "show", search_field:"name_cont"} %>
+
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @entity.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @entity.status_id %>
+</p>
+
+<p>
+  <strong>Registration name:</strong>
+  <%= @entity.registration_name %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @entity.website %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @entity.twitter %>
+</p>
+
+<p>
+  <strong>Linkedin:</strong>
+  <%= @entity.linkedin %>
+</p>
+
+<p>
+  <strong>Finantial year:</strong>
+  <%= @entity.finantial_year %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back',
+              entities_path, :class => 'btn btn-warning' %>
+</div>
+

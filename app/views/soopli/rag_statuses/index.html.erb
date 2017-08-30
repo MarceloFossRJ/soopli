@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rag Statuses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rag_statuses.each do |rag_status| %>
+      <tr>
+        <td><%= rag_status.name %></td>
+        <td><%= link_to 'Show', rag_status %></td>
+        <td><%= link_to 'Edit', edit_rag_status_path(rag_status) %></td>
+        <td><%= link_to 'Destroy', rag_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rag Status', new_rag_status_path %>

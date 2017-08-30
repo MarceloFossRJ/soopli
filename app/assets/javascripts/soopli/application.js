@@ -15,7 +15,19 @@
 //= require_tree .
 //= require soopli/tether.min
 //= require soopli/bootstrap.min
+//= require soopli/bootstrap-datepicker.min
 	
+
+$('.form_datetime').datepicker({
+    autoclose: true,
+    todayBtn: true,
+    pickerPosition: "bottom-left",
+    format: 'mm-dd-yyyy'
+});
+
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
-})
+});
+
+
+

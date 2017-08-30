@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @supplier.name %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @supplier.website %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @supplier.twitter %>
+</p>
+
+<p>
+  <strong>Linkedin:</strong>
+  <%= @supplier.linkedin %>
+</p>
+
+<p>
+  <strong>Facebook:</strong>
+  <%= @supplier.facebook %>
+</p>
+
+<p>
+  <strong>Github:</strong>
+  <%= @supplier.github %>
+</p>
+
+<p>
+  <strong>Instagram:</strong>
+  <%= @supplier.instagram %>
+</p>
+
+<p>
+  <strong>Registration country:</strong>
+  <%= @supplier.registration_country %>
+</p>
+
+<p>
+  <strong>Finantial year:</strong>
+  <%= @supplier.finantial_year %>
+</p>
+
+<p>
+  <strong>Relation started at:</strong>
+  <%= @supplier.relation_started_at %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @supplier.status_id %>
+</p>
+
+<p>
+  <strong>Supplier type:</strong>
+  <%= @supplier.supplier_type_id %>
+</p>
+
+<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
+<%= link_to 'Back', suppliers_path %>

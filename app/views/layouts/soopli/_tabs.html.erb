@@ -1,0 +1,108 @@
+<!-- Tab menu-->
+<%
+  classe_index = classe_new = classe_edit = classe_show = classe_versions = classe_version = "nav-link"
+  case action
+    when "index"
+      classe_index = "nav-link active"
+    when "new"
+      classe_new = "nav-link active"
+    when "edit"
+      classe_edit = "nav-link active"
+    when "show"
+      classe_show = "nav-link active"
+    when "versions"
+      classe_versions = "nav-link active"
+    when "version"
+      classe_version = "nav-link active"
+  end
+%>
+
+<ul class="nav nav-tabs flex-wrap">
+  <% if !defined?(abas) || abas.include?('index')%>
+  <li class="nav-item" >
+      <%= link_to "Index", {controller: controller_class , action: "index"}, class: classe_index %>
+  </li>
+  <% end %>
+  <% if !defined?(abas) || abas.include?('new')%>
+  <li class="nav-item" >
+      <%= link_to "New", {controller: controller_class , action: "new"}, class: classe_new %>
+  </li>
+  <% end %>
+
+  <% if !defined?(abas) || abas.include?('versions')%>
+  <li class="nav-item" >
+      <%= link_to "Versions",{controller: controller_class , action: "versions"}, class: classe_versions %>
+  </li>
+  <% end %>
+
+  <% if action=="edit" || action=="show" || action=="version" %>
+      <li class="nav-item">
+        <%= link_to "Edit",{controller: controller_class , action: "edit"}, class: classe_edit %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Show",{controller: controller_class , action: "show"}, class: classe_show %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Version",{controller: controller_class , action: "version"}, class: classe_version %>
+      </li>
+  <% end %>
+
+
+  <% if action=="index" %>
+
+      <li class="nav-item ml-auto">
+        <a class="nav-link" href="#AdvancedSearch" data-toggle="modal">Advanced Search</a>
+      </li>
+
+      <li class="nav-item">
+      <%= search_form_for @q, :html => { :class => 'navbar-search form-inline float-right', :id => 'quick_search'}   do |f| %>
+            <%= f.search_field search_field, :class => 'form-control', :placeholder => "Quick Search" %>
+
+            <button type="button" class="close pl-1" aria-label="Close">
+              <span aria-hidden="true"
+                    onclick="document.getElementById('q_<%=search_field%>').value='';"
+                    ondblclick="document.getElementById('q_<%=search_field%>').value='';
+                        document.getElementById('quick_search').submit();">
+                &times;
+              </span>
+            </button>
+        <% end %>
+      </li>
+  <% end %>
+
+  <% if action == "versions" %>
+      <li class="nav-item  ml-auto">
+        <%= search_form_for @q, url: eval("versions_" + controller_name + "_path"), :html => { :class => 'navbar-search form-inline float-right', :id => 'quick_search'}   do |f| %>
+            <%= f.search_field 'event_or_object_changes_cont', :class => 'form-control', :placeholder => "Quick Search" %>
+
+            <button type="button" class="close pl-1" aria-label="Close">
+              <span aria-hidden="true"
+                    onclick="document.getElementById('q_event_or_object_changes_cont').value='';"
+                    ondblclick="document.getElementById('q_event_or_object_changes_cont').value='';
+                        document.getElementById('quick_search').submit();">
+                &times;
+              </span>
+            </button>
+        <% end %>
+      </li>
+  <% end %>
+
+  <% if action == "version" %>
+      <li class="nav-item  ml-auto">
+        <%= search_form_for @q, url: eval("version_" + controller_name + "_path(" + params[:id] + ")"), :html => { :class => 'navbar-search form-inline float-right', :id => 'quick_search'}   do |f| %>
+            <%= f.search_field 'event_or_object_changes_cont', :class => 'form-control', :placeholder => "Quick Search" %>
+            <%= f.hidden_field :item_id_eq, value: params[:id]  %>
+            <button type="button" class="close pl-1" aria-label="Close">
+              <span aria-hidden="true"
+                    onclick="document.getElementById('q_event_or_object_changes_cont').value='';"
+                    ondblclick="document.getElementById('q_event_or_object_changes_cont').value='';
+                        document.getElementById('quick_search').submit();">
+                &times;
+              </span>
+            </button>
+        <% end %>
+      </li>
+  <% end %>
+
+</ul>
+&nbsp;

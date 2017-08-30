@@ -11,5 +11,40 @@
  * It is generally better to create a new file per style scope.
  *
  *= require soopli/bootstrap
+ *= require soopli/font-awesome-4.7.0/css/font-awesome.min
+ *= require soopli/bootstrap-datepicker.standalone.min
  *= require_self
  */
+body {
+    margin-top: 70px;
+}
+
+.alert-fixed {
+    margin-top:10px;
+    position: fixed;
+    right: 5px;
+    width: auto;
+    z-index:9999;
+}
+
+html {
+    font-size: 14px;
+}
+
+@include media-breakpoint-up(sm) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@include media-breakpoint-up(md) {
+    html {
+        font-size: 20px;
+    }
+}
+
+@include media-breakpoint-up(lg) {
+    html {
+        font-size: 28px;
+    }
+}

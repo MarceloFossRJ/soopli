@@ -1,0 +1,7 @@
+
+<%= render partial: 'layouts/soopli/header', locals: {title: "New Event Type"} %>
+
+<%= render partial: 'layouts/soopli/tabs', locals: {controller_class: controller_name , action: "new", search_field:""} %>
+
+<%= render 'form', event_type: @event_type %>
+

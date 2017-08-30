@@ -1,0 +1,18 @@
+
+<%= render partial: 'layouts/soopli/header', locals: {title: "Show User"} %>
+
+<%= render partial: 'layouts/soopli/tabs', locals: {controller_class: controller_name , action: "show", search_field:"name_cont"} %>
+
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @category.status_id %>
+</p>
+
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>

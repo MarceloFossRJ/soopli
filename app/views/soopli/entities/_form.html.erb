@@ -1,0 +1,19 @@
+
+<div class="form-element-align">
+  <%= simple_form_for entity, :html => { :class => 'form-group' } do |f| %>
+      <%= f.input :name %>
+      <%= f.association :status, include_blank: false %>
+      <%= f.input :registration_name %>
+      <%= f.input :website %>
+      <%= f.input :twitter %>
+	  <%= f.input :linkedin %>
+	  <%= f.input :finantial_year, discard_year: true %>
+	
+      <div class="form-actions">
+        <%= f.button :submit, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    entities_path, :class => 'btn btn-warning' %>
+      </div>
+
+  <% end %>
+</div>
