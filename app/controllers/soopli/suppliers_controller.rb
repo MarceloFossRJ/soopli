@@ -80,6 +80,9 @@ module Soopli
       # Use callbacks to share common setup or constraints between actions.
       def set_supplier
         @supplier = Supplier.find(params[:id])
+        @rag_statusable = @supplier
+        @rag_statuses = @rag_statusable.rag_statuses
+        @rag_status = RagStatus.new
       end
 
       # Only allow a trusted parameter "white list" through.

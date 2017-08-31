@@ -4,32 +4,16 @@ module Soopli
   class RagStatusesController < ApplicationController
     before_action :set_rag_status, only: [:show, :edit, :update, :destroy]
 
-    # GET /rag_statuses
-    def index
-      @rag_statuses = RagStatus.all
-    end
-
-    # GET /rag_statuses/1
-    def show
-    end
-
-    # GET /rag_statuses/new
-    def new
-      @rag_status = RagStatus.new
-    end
-
-    # GET /rag_statuses/1/edit
-    def edit
-    end
-
     # POST /rag_statuses
     def create
-      @rag_status = RagStatus.new(rag_status_params)
+#      logger.debug "FIND_STATUSABLE= #{find_statusable}"
+      @rag_statusable = find_statusable #Supplier.find(params[:supplier_id])
+      @rag_status = @rag_statusable.rag_statuses.build(rag_status_params)
 
       if @rag_status.save
-        redirect_to @rag_status, notice: 'Rag status was successfully created.'
+        redirect_to eval(find_path), notice: 'Rag status was successfully created.'
       else
-        render :new
+        redirect_to eval(find_path), alert: 'Error.'
       end
     end
 
@@ -56,7 +40,27 @@ module Soopli
 
       # Only allow a trusted parameter "white list" through.
       def rag_status_params
-        params.require(:rag_status).permit(:name)
+        params.require(:rag_status).permit(:rag_status, :description)
+      end
+      
+      def find_statusable
+        params.each do |name, value|
+          if name =~ /(.+)_id$/
+            a = 'Soopli::' + $1.classify
+            return a.constantize.find(value)
+          end
+        end
+        nil
+      end
+      
+      def find_path
+        params.each do |name, value|
+          if name =~ /(.+)_id$/
+            a = "edit_#{$1}_path(#{value})"
+            return a #.constantize.find(value)
+          end
+        end
+        nil
       end
   end
 end

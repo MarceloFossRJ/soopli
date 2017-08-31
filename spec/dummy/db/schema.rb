@@ -139,7 +139,7 @@ ActiveRecord::Schema.define(version: 20170830191342) do
   end
 
   create_table "soopli_rag_statuses", force: :cascade do |t|
-    t.string   "name"
+    t.string   "rag_status"
     t.text     "description"
     t.integer  "rag_statusable_id"
     t.string   "rag_statusable_type"

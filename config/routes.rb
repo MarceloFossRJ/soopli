@@ -1,6 +1,7 @@
 Soopli::Engine.routes.draw do
   resources :suppliers do
     collection { get :versions }
+    resources :rag_statuses
   end
   get 'suppliers/:id/version' => 'suppliers#version', as: :version_suppliers
   
@@ -42,7 +43,7 @@ Soopli::Engine.routes.draw do
   end
   get 'positions/:id/version' => 'positions#version', as: :version_positions
   
-  resources :rag_statuses
+  #resources :rag_statuses
   resources :customers  
   resources :people
 end

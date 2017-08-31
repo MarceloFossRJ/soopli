@@ -1,22 +1,12 @@
-<%= form_for(rag_status) do |f| %>
-  <% if rag_status.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(rag_status.errors.count, "error") %> prohibited this rag_status from being saved:</h2>
 
-      <ul>
-      <% rag_status.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+
+<div class="form-element-align">
+  <%= simple_form_for [rag_statusable, rag_status], :html => { :class => 'form-group' } do |f| %>	
+	<%= f.input :rag_status, collection: [ "Red", "Amber", "Green"] %>
+	<%= f.input :description %>
+
+	<div class="form-actions">
+		<%= f.button :submit, :class => 'btn btn-primary' %>
+	</div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
