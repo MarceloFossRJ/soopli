@@ -5,6 +5,8 @@ RSpec.describe "people/edit", type: :view do
     @person = assign(:person, Person.create!(
       :name => "MyString",
       :email => "MyString",
+      :phone => "MyString",
+      :mobile => "MyString",
       :position_id => 1,
       :type => ""
     ))
@@ -18,6 +20,10 @@ RSpec.describe "people/edit", type: :view do
       assert_select "input#person_name[name=?]", "person[name]"
 
       assert_select "input#person_email[name=?]", "person[email]"
+
+      assert_select "input#person_phone[name=?]", "person[phone]"
+
+      assert_select "input#person_mobile[name=?]", "person[mobile]"
 
       assert_select "input#person_position_id[name=?]", "person[position_id]"
 

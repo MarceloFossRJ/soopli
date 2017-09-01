@@ -1,0 +1,5 @@
+<%= render partial: 'layouts/soopli/header', locals: {title: "#{@classe.humanize} CRUD History"} %>
+
+<%= render partial: 'layouts/soopli/sti_tabs', locals: {controller_class: @classe , action: "version", search_field:"name_cont"} %>
+
+<%= render partial: 'layouts/soopli/versions', locals: {versions: @versions}%>

@@ -27,7 +27,6 @@ Soopli::Engine.routes.draw do
   
   root :to => "entities#index"
 
-  
   resources :entities do
     collection { get :versions }
   end
@@ -45,5 +44,15 @@ Soopli::Engine.routes.draw do
   
   #resources :rag_statuses
   resources :customers  
-  resources :people
+  #resources :people
+  
+  resources :internal_people, controller: 'people', type: 'Soopli::InternalPeople' do
+    collection { get :versions }
+  end
+  get 'internal_people/:id/version' => 'internal_people#version', as: :version_internal_people
+  
+  resources :supplier_people, controller: 'people', type: 'Soopli::SupplierPeople' do
+    collection { get :versions }
+  end
+  get 'supplier_people/:id/version' => 'supplier_people#version', as: :version_supplier_people
 end

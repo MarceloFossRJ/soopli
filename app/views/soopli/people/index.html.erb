@@ -1,14 +1,44 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: 'layouts/soopli/header', locals: {title: "#{@classe.humanize}"} %>
 
-<h1>People</h1>
+<%= render partial: 'layouts/soopli/sti_tabs', locals: {controller_class: @classe , action: "index", search_field:"name_cont"} %>
 
-<table>
-  <thead>
+<!-- Modal Advanced Search -->
+<div id="AdvancedSearch" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Advanced Search</h4>
+      </div>
+
+      <%= search_form_for @q, :builder => SimpleForm::FormBuilder, :html => { :class => 'form-group modal-form' }  do |f| %>
+          <div class="modal-body">
+            <%= f.input :name_cont, label: 'Name contains', required: false %>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= f.button :submit, :class => 'btn btn-primary', :value => 'Search' %>
+          </div>
+      <% end %>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div class="table-responsive">
+  <table class="table table-striped table-hover table-sm table-bordered">
+    <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Position</th>
-      <th>Type</th>
+	  <th>Actions</th>
+	  <th><%= sort_link @q, :id, "Id" %></th>
+      <th><%= sort_link @q, :name, "Name"%></th>
+      <th><%= sort_link @q, :email, "Email"%></th>
+      <th><%= sort_link @q, :phone, "Phone"%></th>
+      <th><%= sort_link @q, :mobile, "Mobile"%></th>
+      <th><%= sort_link @q, :position, "Position"%></th>
+      <th><%= sort_link @q, :type, "Type"%></th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,18 +46,24 @@
   <tbody>
     <% @people.each do |person| %>
       <tr>
+		<td>
+			<%= render partial: 'layouts/soopli/actions', locals: {link_to_show: eval( "#{@classe}_path(#{person.id})" ) , link_to_edit: eval( "edit_#{@classe}_path(#{person.id})" ) , link_to_delete: nil} %>
+		</td>
+		<td><%= person.id %></td>
         <td><%= person.name %></td>
         <td><%= person.email %></td>
+        <td><%= person.phone %></td>
+        <td><%= person.mobile %></td>
         <td><%= person.position_id %></td>
         <td><%= person.type %></td>
-        <td><%= link_to 'Show', person %></td>
-        <td><%= link_to 'Edit', edit_person_path(person) %></td>
-        <td><%= link_to 'Destroy', person, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+</div>
 
 <br>
 
-<%= link_to 'New Person', new_person_path %>
+<%= paginate @people, views_prefix: 'soopli' %>
+
+

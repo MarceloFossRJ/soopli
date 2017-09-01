@@ -1,37 +1,23 @@
-<%= form_for(person) do |f| %>
-  <% if person.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
 
-      <ul>
-      <% person.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
+<div class="form-element-align">
+  <%= simple_form_for person, :html => { :class => 'form-group' } do |f| %>
+
+		<%= f.input :name %>
+		<%= f.input :email %>
+		<%= f.input :phone %>
+		<%= f.input :mobile %>
+		<%= f.input :position_id %>
+		<%= f.input :type %>
+		
+	
+      <div class="form-actions">
+        <%= f.button :submit, :class => 'btn btn-primary' %>
+        <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                    eval("#{@classe.pluralize}_path"), :class => 'btn btn-warning' %>
+      </div>
+
   <% end %>
+</div>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
 
-  <div class="field">
-    <%= f.label :position_id %>
-    <%= f.number_field :position_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :type %>
-    <%= f.text_field :type %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

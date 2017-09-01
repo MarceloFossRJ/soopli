@@ -3,6 +3,8 @@ class CreateSoopliPeople < ActiveRecord::Migration[5.0]
     create_table :soopli_people do |t|
       t.string :name
       t.string :email
+      t.string :phone
+      t.string :mobile
       t.integer :position_id
       t.string :type
 
