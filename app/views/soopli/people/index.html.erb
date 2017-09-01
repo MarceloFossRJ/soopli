@@ -54,7 +54,7 @@
         <td><%= person.email %></td>
         <td><%= person.phone %></td>
         <td><%= person.mobile %></td>
-        <td><%= person.position_id %></td>
+        <td><%= person.position.name unless person.position_id.blank? %></td>
         <td><%= person.type %></td>
       </tr>
     <% end %>

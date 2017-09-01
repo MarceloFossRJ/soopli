@@ -6,7 +6,7 @@
 		<%= f.input :email %>
 		<%= f.input :phone %>
 		<%= f.input :mobile %>
-		<%= f.input :position_id %>
+		<%= f.association :position, include_blank: true %>
 		<%= f.input :type %>
 		
 	
