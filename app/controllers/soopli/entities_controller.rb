@@ -84,7 +84,7 @@ module Soopli
 
       # Only allow a trusted parameter "white list" through.
       def entity_params
-        params.require(:entity).permit(:name, :status_id, :registration_name, :website, :twitter, :linkedin, :finantial_year)
+        params.require(:entity).permit(:name, :status_id, :registration_name, :website, :twitter, :linkedin, :finantial_year, :internal_owner_id)
       end
       
       def sort_column

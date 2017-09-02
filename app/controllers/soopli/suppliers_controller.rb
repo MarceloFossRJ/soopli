@@ -87,7 +87,7 @@ module Soopli
 
       # Only allow a trusted parameter "white list" through.
       def supplier_params
-        params.require(:supplier).permit(:name, :website, :twitter, :linkedin, :facebook, :github, :instagram, :registration_country, :finantial_year, :relation_started_at, :status_id, :supplier_type_id)
+        params.require(:supplier).permit(:name, :website, :twitter, :linkedin, :facebook, :github, :instagram, :registration_country, :finantial_year, :relation_started_at, :status_id, :supplier_type_id, :internal_owner_id)
       end
       
       def sort_column

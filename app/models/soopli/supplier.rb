@@ -5,6 +5,7 @@ module Soopli
     belongs_to :supplier_type
     belongs_to :status
     has_many :rag_statuses, as: :rag_statusable
+    belongs_to :internal_person, :foreign_key => :internal_owner_id, required: false
     
     validates :name, presence: true, length: {in: 3..250}, uniqueness: true
     validates :website, uniqueness: true, length: {in: 3..250}, :format => URI::regexp(%w(http https)), allow_blank: true

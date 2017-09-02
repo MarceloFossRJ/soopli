@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901185336) do
+ActiveRecord::Schema.define(version: 20170902113423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,8 +18,9 @@ ActiveRecord::Schema.define(version: 20170901185336) do
   create_table "soopli_categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "status_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "internal_owner_id"
   end
 
   create_table "soopli_category_versions", force: :cascade do |t|
@@ -80,6 +81,7 @@ ActiveRecord::Schema.define(version: 20170901185336) do
     t.date     "finantial_year"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "internal_owner_id"
   end
 
   create_table "soopli_entity_versions", force: :cascade do |t|
@@ -211,6 +213,7 @@ ActiveRecord::Schema.define(version: 20170901185336) do
     t.integer  "supplier_type_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "internal_owner_id"
   end
 
   create_table "soopli_team_versions", force: :cascade do |t|

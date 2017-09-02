@@ -84,7 +84,7 @@ module Soopli
 
       # Only allow a trusted parameter "white list" through.
       def category_params
-        params.require(:category).permit(:name, :status_id)
+        params.require(:category).permit(:name, :status_id, :internal_owner_id)
       end
       
       def sort_column

@@ -12,6 +12,10 @@
 		<%= f.input :finantial_year, discard_year: true %>
 
 <hr class="my-4">
+
+		<%= f.association :internal_person, label: 'Internal Owner', required: false %>
+		
+<hr class="my-4">
 		
 		<%= f.input :website %>
 		<%= f.input :twitter %>
