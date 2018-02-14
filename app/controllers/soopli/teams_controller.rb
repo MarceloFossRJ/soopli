@@ -84,7 +84,7 @@ module Soopli
 
       # Only allow a trusted parameter "white list" through.
       def team_params
-        params.require(:team).permit(:name, :description)
+        params.require(:team).permit(:name, :description, :internal_owner_id)
       end
       
       def sort_column

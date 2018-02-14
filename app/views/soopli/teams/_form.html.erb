@@ -3,6 +3,9 @@
   <%= simple_form_for team, :html => { :class => 'form-group' } do |f| %>
       <%= f.input :name %>
       <%= f.input :description %>
+	  <hr class="my-4">
+	  <%= f.association :internal_person, label: 'Internal Owner', required: false %>
+	  
 	
       <div class="form-actions">
         <%= f.button :submit, :class => 'btn btn-primary' %>

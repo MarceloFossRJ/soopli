@@ -5,9 +5,14 @@ module Soopli
     belongs_to :supplier_type
     belongs_to :status
     has_many :rag_statuses, as: :rag_statusable
+    
+    has_many :supplier_teams, :foreign_key => :supplier_id
+    has_many :supplier_people, through: :supplier_teams
+    
     belongs_to :internal_person, :foreign_key => :internal_owner_id, required: false
     
     validates :name, presence: true, length: {in: 3..250}, uniqueness: true
+
     validates :website, uniqueness: true, length: {in: 3..250}, :format => URI::regexp(%w(http https)), allow_blank: true
     validates :twitter, uniqueness: true, length: {in: 3..250}, allow_blank: true
     validates :linkedin, uniqueness: true, length: {in: 3..250}, allow_blank: true
@@ -17,7 +22,7 @@ module Soopli
     
     validates :registration_country, presence: true
     validates :supplier_type_id, presence: true
-    validates :relation_started_at, presence: true
+    #validates :relation_started_at, presence: true
     validates :status_id, presence: true
 #    validates :finantial_year, presence: true
     

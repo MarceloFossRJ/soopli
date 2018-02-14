@@ -33,17 +33,13 @@
 	  <th>Actions</th>
 	  <th><%= sort_link @q, :id, "Id" %></th>
       <th><%= sort_link @q, :name, "Name"%></th>
-      <th><%= sort_link @q, :website, "Website"%></th>
-      <th><%= sort_link @q, :twitter, "Twitter"%></th>
-      <th><%= sort_link @q, :linkedin, "Linkedin"%></th>
-      <th><%= sort_link @q, :facebook, "Facebook"%></th>
-      <th><%= sort_link @q, :github, "Github"%></th>
-      <th><%= sort_link @q, :instagram, "Instagram"%></th>
-      <th><%= sort_link @q, :registration_country, "Registration country"%></th>
-      <th><%= sort_link @q, :finantial_year, "Finantial year"%></th>
-      <th><%= sort_link @q, :relation_started_at, "Relation started at"%></th>
       <th><%= sort_link @q, :status_id, "Status"%></th>
       <th><%= sort_link @q, :supplier_type_id, "Supplier type"%></th>
+      <th><%= sort_link @q, :website, "Website"%></th>
+      <th><%= sort_link @q, :facebook, "Facebook"%></th>
+      <th><%= sort_link @q, :instagram, "Instagram"%></th>
+      <th><%= sort_link @q, :relation_started_at, "Relation started at"%></th>
+
     </tr>
   </thead>
 
@@ -54,18 +50,13 @@
 			<%= render partial: 'layouts/soopli/actions', locals: {link_to_show: supplier_path(supplier) , link_to_edit: edit_supplier_path(supplier) , link_to_delete: nil} %>
 		</td>
         <td><%= supplier.id %></td>		
-	    <td><%= supplier.name %></td>
-	    <td><%= supplier.website %></td>
-	    <td><%= supplier.twitter %></td>
-	    <td><%= supplier.linkedin %></td>
-	    <td><%= supplier.facebook %></td>
-	    <td><%= supplier.github %></td>
-	    <td><%= supplier.instagram %></td>
-	    <td><%= supplier.registration_country %></td>
-	    <td><%= supplier.finantial_year %></td>
-	    <td><%= supplier.relation_started_at %></td>
-	    <td><%= supplier.status_id %></td>
-	    <td><%= supplier.supplier_type_id %></td>
+	      <td><%= supplier.name %></td>
+        <td><%= supplier.status.name %></td>
+        <td><%= supplier.supplier_type.name %></td>
+        <td><a href="<%= supplier.website %>" target="_blank"><%= supplier.website %></a> </td>
+	      <td><%= supplier.facebook %></td>
+        <td><%= supplier.instagram %></td>
+	      <td><%= supplier.relation_started_at %></td>
       </tr>
     <% end %>
   </tbody>
